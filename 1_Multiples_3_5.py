@@ -2,6 +2,10 @@
 
 # Find the sum of all the multiples of 3 or 5 below 1000
 
+'''
+Correct Answer: 233168
+'''
+
 BOUND = 1000
 MULS = [3, 5]
 

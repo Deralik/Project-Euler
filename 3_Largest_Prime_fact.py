@@ -14,29 +14,10 @@ def main():
     prime_flag = True
     unique_factors = [3]
 
-    start_time = time.time()
-    # Factors larger than the squrt of the bound do not exist
-    # Check only the odd numbers up to that new bound
-    for i in range(1, int(sqrt(BOUND)), 2):
-        # Confirm if @i is a prime
-        prime_flag = True
-        for j in range(3, int(sqrt(i)), 2):
-            if i % j == 0:
-                prime_flag = False
-                break
-
-        # Update if @i is a prime factor
-        if prime_flag and BOUND % i == 0:
-            lpf = i
-    print(f"Normal method: {time.time() - start_time}")
-    print(f"Largest Prime Factor: {lpf}")
-
-    start_time = time.time()
-
     for i in range(1, int(sqrt(BOUND)), 2):
         i_bound = int(sqrt(i))
         unique_flag = True
-        # when @i_bound increases, check if it's a unique factor
+        # when @i_bound increases, check if it's a unique factor and odd
         if i_bound > unique_factors[-1] and i_bound % 2:
             for f in unique_factors:
                 if i_bound % f == 0:
@@ -55,10 +36,12 @@ def main():
         # Update if @i is a prime factor of @BOUND
         if prime_flag and BOUND % i == 0:
             lpf = i
-    print(f"Unique list Method: {time.time() - start_time}")
 
-    print(f"Largest Prime Factor: {lpf}")
+    return lpf
 
 
 if __name__ == "__main__":
-    main()
+    start_time = time.time()
+    lpf = main()
+    print(f"Unique list Method: {time.time() - start_time:.4f}sec")
+    print(f"Largest Prime Factor: {lpf}")

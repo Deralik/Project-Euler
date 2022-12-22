@@ -21,6 +21,9 @@ def main():
 
     while EF0 <= BOUND:
         total += EF0
+
+        # Formula exploits the fact that every 3rd fib is even
+        # Derivation explained on https://www.geeksforgeeks.org/nth-even-fibonacci-number/
         EF0 = (4 * EF1) + EF2
         EF1, EF2 = EF0, EF1
 

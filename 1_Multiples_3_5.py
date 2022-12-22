@@ -1,12 +1,15 @@
 # https://projecteuler.net/problem=1
 
+# Made to work with any bound and set of multiples
+
 '''
 Correct Answer: 233168
 '''
 
+from itertools import combinations
+
 BOUND = 1000
 MULS = [3, 5]
-
 
 # Function to sum all multiples of @mul under the bound
 def bounded_sum(mul):
@@ -22,13 +25,15 @@ def main():
     total = 0
 
     # Find individual total
-    total += bounded_sum(MULS[0])
-    total += bounded_sum(MULS[1])
+    for i in range(0, len(MULS)):
+        total += bounded_sum(MULS[i])
 
-    # subtract duplicates
-    total -= bounded_sum(MULS[0]*MULS[1])
+    # Find and subtract set of duplicate multiples
+    dups = list(map(lambda a: a[0] * a[1], combinations(MULS, 2)))
+    for i in range(0, len(dups)):
+        total -= bounded_sum(dups[i])
 
-    print(f"Total: {total}\n")
+    print(f"Total: {total}")
 
 if __name__ == "__main__":
     main()

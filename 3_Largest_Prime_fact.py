@@ -4,7 +4,7 @@
 Correct Answer: 6857
 '''
 
-import time
+from time import time
 from math import sqrt
 
 BOUND = 600851475143
@@ -41,7 +41,7 @@ def main():
 
 
 if __name__ == "__main__":
-    start_time = time.time()
+    start_time = time()
     lpf = main()
-    print(f"Unique list Method: {time.time() - start_time:.4f}sec")
+    print(f"Unique list Method: {time() - start_time:.4f}sec")
     print(f"Largest Prime Factor: {lpf}")

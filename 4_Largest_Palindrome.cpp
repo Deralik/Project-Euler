@@ -18,7 +18,7 @@ bool isPalindrome(int num) {
     int num_cpy = num;
 
     while (num > 0) {
-        n = n * 10 + num % 10;
+        n *= 10 + num % 10;
         num = num / 10 | 0;
     }
     return n == num_cpy;
